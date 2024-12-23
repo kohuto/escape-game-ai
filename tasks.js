@@ -65,7 +65,7 @@ export const tasks = [
     `,
     hasInput: true,
     correctAnswer: "915075", // Posledních 6 číslic z 100. Fibonacciho čísla
-    position: { top: "50%", left: "50%", width: "10%", height: "20%" }
+    position: { top: "40%", left: "40%", width: "18%", height: "20%" }
   },
   {
     id: "ukol06",
