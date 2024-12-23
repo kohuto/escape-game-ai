@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Úniková hra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pozadí -->
+    <div class="background"></div>
+
+    <!-- Klikací mapa -->
+    <div class="clickable-map"></div>
+
+    <!-- Okno ve stylu terminálu -->
+    <div id="terminal-window" class="terminal">
+        <button class="close-button" id="closeTerminalBtn">✖</button>
+        <div class="terminal-content">Vítej ve ztemnělém datovém centru, kde umělá inteligence SPECTRA uzamkla všechny východy. Někde tu čeká přístupový kód, ale čas je omezený. Úkolů je devět a každý vyřešený tě posune o krok dál. Stačí klikat na objekty a dávat pozor na detaily – SPECTRA totiž nic neodpouští. Sleduj zbývající minuty a nenech se zahnat do kouta. Dokážeš vyzrát na všechny hádanky a otevřít únikové dveře? Hodně štěstí.</div>
+    </div>
+
+    <!--
+      Šablona Mustache pro vykreslení úkolu
+      Můžete sem vložit cokoliv HTML, včetně
+      podmíněných sekcí Mustache ({{#hasInput}} ... {{/hasInput}})
+    -->
+    <script id="task-template" type="x-tmpl-mustache">
+      <h2>{{title}}</h2>
+      <p>{{{description}}}</p>
+
+      {{#hasInput}}
+        <!-- Tohle se vykreslí jen pokud "hasInput" == true -->
+        <div id="feedback"></div>
+      {{/hasInput}}
+    </script>
+
+    <!-- Mustache z CDN (před vaším main.js, aby byl k dispozici) -->
+    <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
+
+
+    <!-- Hlavní modul -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* Styl pro pozadí */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.background {
+    height: 100%;
+    background-image: url('images/background-room.jpg'); /* Nahraď 'background.jpg' názvem svého souboru */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Styl pro okno terminálu */
+.terminal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #000;
+    color: #0f0;
+    border: 2px solid #0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 1000;
+}
+
+.terminal-content {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Styl pro tlačítko zavření */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #0f0;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+}
+
+.close-button:hover {
+    color: #f00;
+}
+
+/* Klikací mapa */
+.clickable-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Klikací oblasti */
+.clickable-area {
+    position: absolute;
+   /* border: 2px solid rgba(0, 255, 0, 0.7);  Zelený rámeček pro zvýraznění */
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.clickable-area:hover {
+    transform: scale(1.1);
+    background: rgba(0, 255, 0, 0.2); /* Poloprůhledná zelená při najetí myší */
+}
+
+/* Skrytý stav terminálového okna */
+.hidden {
+    display: none;
+}
+
+.terminal input[type="text"] {
+    background-color: #000;    /* černé pozadí */
+    color: #0f0;               /* zelený text */
+    border: 1px solid #0f0;    /* zelený rámeček */
+    padding: 5px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.terminal button {
+    background-color: #000;    /* černé pozadí */
+    color: #0f0;               /* zelený text */
+    border: 1px solid #0f0;    /* zelený rámeček */
+    padding: 5px 10px;
+    font-family: "Courier New", Courier, monospace;
+    cursor: pointer;
+}
+
+.terminal button:hover {
+    background-color: #0f0;
+    color: #000;
+}
+
+.input-container {
+    display: flex; /* Zajistí, že obdélníčky budou vedle sebe */
+    gap: 10px;     /* Vytvoří mezery mezi obdélníčky */
+    justify-content: center; /* Vycentrování políček */
+    margin-top: 10px;
+}
+
+.input-box {
+    width: 30px;   /* Nastaví šířku obdélníčku na velikost jednoho znaku */
+    height: 40px;  /* Výška pro lepší čitelnost */
+    text-align: center; /* Zarovná text doprostřed */
+    font-size: 20px; /* Větší písmo pro lepší viditelnost */
+    border: 2px solid #0f0; /* Zelený rámeček pro konzistentní vzhled */
+    background: #000; /* Černé pozadí */
+    color: #0f0; /* Zelený text */
+    font-family: 'Courier New', Courier, monospace;
+    outline: none; /* Zruší modrý obrys při kliknutí */
+}
+
+.input-box:focus {
+    border-color: #00f; /* Modrá barva při zaostření */
+    box-shadow: 0 0 5px #00f; /* Efekt záře při zaostření */
+}
+
+.terminal {
+    animation: glow 1.5s infinite alternate; /* Blikání efekt */
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px #0f0;
+    }
+    50% {
+        box-shadow: 0 0 20px #0f0, 0 0 30px #0f0;
+    }
+    100% {
+        box-shadow: 0 0 10px #0f0;
+    }
+}
+
+
+
+
