@@ -7,8 +7,11 @@ import { startTimer } from './timer.js';
 import { playBackgroundAudio } from './audio.js';
 import { showTypingMessage } from './showTypingMessage.js';
 import { typewriterEffectHTML } from './typewriter.js';
+import { introText } from './intro_outro_texts.js';
+import { completedText } from './intro_outro_texts.js';
+import { correctAnswerText } from './intro_outro_texts.js';
+import { incorrectAnswerText } from './intro_outro_texts.js';
 
-// Mustache
 const MustacheLib = window.Mustache;
 
 // Uchování stavu
@@ -59,20 +62,17 @@ function renderAnswerInputs(task) {
       if (userInput.length === task.correctAnswer.length) {
         const feedback = document.getElementById('feedback');
         if (userInput === task.correctAnswer) {
-          feedback.innerHTML = '<p style="color: green;">Správná odpověď!</p>';
+          feedback.innerHTML = correctAnswerText;
           completedTasks[task.id] = true;
           saveProgress(completedTasks, remainingTime);
-          // Zkontrolujeme, zda teď už nejsou všechny
+          // Kontorola, zda jsou všechny úkoly splněné
 
   const allTasksDone = tasks.every(t => completedTasks[t.id]);
   if (allTasksDone) {
-    showTypingMessage(`
-      <h2>Dokončeno!</h2>
-      <p>Vyřešil jsi všechny úkoly. Teď už můžeš uniknout!</p>
-    `,60);
+    showTypingMessage(completedText, 60);
   }
         } else {
-          feedback.innerHTML = '<p style="color: red;">Špatná odpověď, zkus to znovu.</p>';
+          feedback.innerHTML = incorrectAnswerText;
         }
       }
     });
@@ -82,15 +82,7 @@ function renderAnswerInputs(task) {
 }
 
 function showIntro() {
-    const introText = `<h2>Vítej ve ztemnělém datovém centru</h2>
-<p>Kde umělá inteligence <strong>SPECTRA</strong> uzamkla všechny východy. Někde tu čeká přístupový kód, ale času je málo. Čeká tě devět úkolů a každý splněný tě posune o krok dál.</p>
-
-<p>Kliknutím na objekty rozlouskneš jednotlivé hádanky, ale <strong>SPECTRA</strong> nic neodpouští – dávej pozor na sebemenší detail. Sleduj zbývající minuty a nepolevuj, dokud nerozluštíš i tu poslední část.</p>
-
-<p>Dokážeš vyzrát na všechny nástrahy a dostat se k únikovým dveřím včas? Hodně štěstí.</p>
-`;  
     showTypingMessage(introText, 60);
-   
   }
   
 
@@ -118,8 +110,7 @@ function showTaskInTerminal(task) {
   // 5) Otevřeme terminál
   openTerminal();
 
-  // 6) Spustíme efekt psaní textu po znacích
-  //    (poslední parametr 60 = rychlost v ms mezi znaky)
+  // 6) Spuštění efektu psaní textu po znacích (poslední parametr 60 = rychlost v ms mezi znaky)
   typewriterEffectHTML(terminalContent, renderedHtml, 60, () => {
 
     // 7) Pokud úkol vyžaduje vstup, přidáme políčka pro odpověď
@@ -141,7 +132,6 @@ function init() {
   const { completedTasks: loadedTasks, remainingTime: loadedTime } = loadProgress();
   if (loadedTasks) completedTasks = loadedTasks;
   if (loadedTime) remainingTime = loadedTime;
-    // 1) Zavoláme hned showIntro
   showIntro();
   // Spustíme timer
   startTimer(
@@ -155,10 +145,10 @@ function init() {
     }
   );
 
-  // Vytvoříme tlačítko pro restart
+  // Vytvoření tlačítka pro restart
   createRestartButton();
 
-  // Napojíme tlačítko na zavření terminálu
+  // Napojení tlačítka na zavření terminálu
   const btnClose = document.getElementById('closeTerminalBtn');
   if (btnClose) {
     btnClose.addEventListener('click', closeTerminal);
@@ -176,7 +166,7 @@ function init() {
     area.classList.add('clickable-area');
     area.dataset.taskId = task.id;
 
-    // Nastavení pozice (z task.position)
+    // Nastavení pozice
     area.style.top = task.position.top;
     area.style.left = task.position.left;
     area.style.width = task.position.width;
@@ -195,11 +185,10 @@ function init() {
         return;
       }
 
-      // Vykreslíme úkol do terminálu pomocí Mustache + typewriter
+      // Vykreslení úkol do terminálu pomocí Mustache + typewriter
       showTaskInTerminal(task);
     });
   });
 }
 
-// Spustíme init po načtení DOM
 document.addEventListener('DOMContentLoaded', init);

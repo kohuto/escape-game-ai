@@ -1,7 +1,7 @@
 import { openTerminal } from './terminal.js';
 import { typewriterEffectHTML } from './typewriter.js';
 
-function showTypingMessage(message, speed = 50) {
+function showTypingMessage(message, speed = 10) {
   const terminalWindow = document.getElementById('terminal-window');
   const terminalContent = terminalWindow.querySelector('.terminal-content');
   openTerminal();
@@ -11,7 +11,7 @@ function showTypingMessage(message, speed = 50) {
 
   // Efekt psaní
   typewriterEffectHTML(terminalContent, message, speed, () => {
-    
+
   });
 }
 

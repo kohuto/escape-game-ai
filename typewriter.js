@@ -1,11 +1,11 @@
 export function typewriterEffectHTML(container, html, speed, callback = () => {}) {
-  // Vyprázdníme kontejner
+  // Vyprázdnění kontejner
   container.innerHTML = "";
   
   // Zavedení příznaku zrušení
   let cancelled = false;
 
-  // Umožníme externímu kódu zrušit efekt
+  // externí kód může zrušit efekt
   container.cancelTypewriter = () => { cancelled = true; };
 
   // Rozparsování HTML na tokeny
@@ -35,7 +35,7 @@ export function typewriterEffectHTML(container, html, speed, callback = () => {}
 
   let i = 0;
   function processNextToken() {
-    // Pokud byl efekt zrušen, ukončíme vykreslování
+    // Pokud byl efekt zrušen, ukončí se vykreslování
     if (cancelled) return;
 
     if (i >= tokens.length) {
