@@ -19,10 +19,7 @@ export function openTerminal() {
     }
   }
   
-
-  
-  
-  // Zobrazení zprávy v terminálu (např. chybová hláška)
+  // Zobrazení zprávy v terminálu
   export function showTerminalMessage(message) {
     const terminalWindow = document.getElementById('terminal-window');
     const terminalContent = terminalWindow.querySelector('.terminal-content');

@@ -19,7 +19,7 @@ export const tasks = [
       na prohlédnutí a testování přirozených čísel.</p>
     `,
     hasInput: true,
-    correctAnswer: "2741",  // 400. prvočíslo
+    correctAnswer: "2741",
     position: { top: "25%", left: "12%", width: "7%", height: "50%" }
   },
   {
@@ -49,7 +49,7 @@ export const tasks = [
       nebo vlastní skript.</p>
     `,
     hasInput: true,
-    correctAnswer: "1366",  // Součet číslic 2^1000
+    correctAnswer: "1366",
     position: { top: "40%", left: "30%", width: "7%", height: "20%" }
   },
   {
@@ -64,7 +64,7 @@ export const tasks = [
       programátorské řešení.</p>
     `,
     hasInput: true,
-    correctAnswer: "915075", // Posledních 6 číslic z 100. Fibonacciho čísla
+    correctAnswer: "915075",
     position: { top: "40%", left: "40%", width: "19%", height: "20%" }
   },
   {
@@ -79,7 +79,7 @@ export const tasks = [
       nereálná, použij skript.</p>
     `,
     hasInput: true,
-    correctAnswer: "29809",  // Celkový počet jedniček v binárním zápisu 1..5000
+    correctAnswer: "29809", 
     position: { top: "40%", left: "63%", width: "7%", height: "20%" }
   },
   {
@@ -94,7 +94,7 @@ export const tasks = [
       nebo menší skript je to ale zvládnutelné.</p>
     `,
     hasInput: true,
-    correctAnswer: "1404", // Součet cifr 200! (doporučeno zkontrolovat programem)
+    correctAnswer: "1404",
     position: { top: "30%", left: "72%", width: "7%", height: "40%" }
   },
   {
@@ -123,7 +123,7 @@ export const tasks = [
       <p><em>Upozornění:</em> Bez správného kódu nebude jádro SPECTRY plně odemknuto.</p>
     `,
     hasInput: true,
-    correctAnswer: "551616", // posledních 6 číslic z 2^64 = 18446744073709551616
+    correctAnswer: "551616", 
     position: { top: "20%", left: "90%", width: "7%", height: "60%" }
   }
 ];

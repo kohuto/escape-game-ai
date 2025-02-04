@@ -6,11 +6,9 @@ import { openTerminal, closeTerminal, showTerminalMessage } from './terminal.js'
 import { startTimer } from './timer.js';
 import { playBackgroundAudio } from './audio.js';
 import { showTypingMessage } from './showTypingMessage.js';
-
-// *** Importujeme naši funkci na psaní HTML po znacích ***
 import { typewriterEffectHTML } from './typewriter.js';
 
-// Mustache z CDN (dostupné jako window.Mustache)
+// Mustache
 const MustacheLib = window.Mustache;
 
 // Uchování stavu
@@ -26,17 +24,8 @@ function handleClearProgress() {
 // Vytvoření tlačítka pro restart
 function createRestartButton() {
   const restartButton = document.createElement('button');
+  restartButton.classList.add('restart-button');
   restartButton.innerHTML = '&#x21bb;';
-  restartButton.style.position = 'fixed';
-  restartButton.style.top = '10px';
-  restartButton.style.left = '10px';
-  restartButton.style.padding = '10px';
-  restartButton.style.fontSize = '24px';
-  restartButton.style.backgroundColor = '#0f0';
-  restartButton.style.color = '#000';
-  restartButton.style.border = 'none';
-  restartButton.style.cursor = 'pointer';
-
   restartButton.addEventListener('click', handleClearProgress);
   document.body.appendChild(restartButton);
 }
@@ -74,6 +63,7 @@ function renderAnswerInputs(task) {
           completedTasks[task.id] = true;
           saveProgress(completedTasks, remainingTime);
           // Zkontrolujeme, zda teď už nejsou všechny
+
   const allTasksDone = tasks.every(t => completedTasks[t.id]);
   if (allTasksDone) {
     showTypingMessage(`
@@ -104,14 +94,10 @@ function showIntro() {
   }
   
 
-// Funkce, která vykreslí úkol do terminálu pomocí Mustache + typewriter
+// vykreslení úkolu do terminálu pomocí Mustache + typewriter
 function showTaskInTerminal(task) {
   // 1) Najdeme šablonu
   const templateEl = document.getElementById('task-template');
-  if (!templateEl) {
-    console.error('Šablona task-template nebyla nalezena v HTML!');
-    return;
-  }
   const templateString = templateEl.innerHTML;
 
   // 2) Připravíme data
@@ -133,10 +119,8 @@ function showTaskInTerminal(task) {
   openTerminal();
 
   // 6) Spustíme efekt psaní textu po znacích
-  //    (poslední parametr 20 = rychlost v ms mezi znaky)
+  //    (poslední parametr 60 = rychlost v ms mezi znaky)
   typewriterEffectHTML(terminalContent, renderedHtml, 60, () => {
-    // Tato funkce se volá, až se text dopíše
-    console.log("Dopsáno...");
 
     // 7) Pokud úkol vyžaduje vstup, přidáme políčka pro odpověď
     if (task.hasInput) {
@@ -185,7 +169,7 @@ function init() {
     playBackgroundAudio();
   }, { once: true });
 
-  // Vygenerujeme klikací oblasti podle tasks
+  // Generování klikací oblasti podle tasks
   const clickableMap = document.querySelector('.clickable-map');
   tasks.forEach(task => {
     const area = document.createElement('div');
