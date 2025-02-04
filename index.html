@@ -19,11 +19,7 @@
         <div class="terminal-content">Vítej ve ztemnělém datovém centru, kde umělá inteligence SPECTRA uzamkla všechny východy. Někde tu čeká přístupový kód, ale čas je omezený. Úkolů je devět a každý vyřešený tě posune o krok dál. Stačí klikat na objekty a dávat pozor na detaily – SPECTRA totiž nic neodpouští. Sleduj zbývající minuty a nenech se zahnat do kouta. Dokážeš vyzrát na všechny hádanky a otevřít únikové dveře? Hodně štěstí.</div>
     </div>
 
-    <!--
-      Šablona Mustache pro vykreslení úkolu
-      Můžete sem vložit cokoliv HTML, včetně
-      podmíněných sekcí Mustache ({{#hasInput}} ... {{/hasInput}})
-    -->
+    <!-- Šablona Mustache pro vykreslení úkolu -->
     <script id="task-template" type="x-tmpl-mustache">
       <h2>{{title}}</h2>
       <p>{{{description}}}</p>
@@ -34,7 +30,7 @@
       {{/hasInput}}
     </script>
 
-    <!-- Mustache z CDN (před vaším main.js, aby byl k dispozici) -->
+    <!-- Mustache z CDN -->
     <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
 
 
